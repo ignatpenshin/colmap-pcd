@@ -96,7 +96,8 @@ class BundleAdjustmentLidarCostFunction {
     residuals[0] = T(weight_) * ceres::sqrt((T(0.) - (point3D[0] * a_ + point3D[1] * b_ + point3D[2] * c_ + d_))
                     * (T(0.) - (point3D[0] * a_ + point3D[1] * b_ + point3D[2] * c_ + d_)));
     
-    std::cout << "Lidar_Cost: " << residuals[0] << std::endl;
+    std::cout << "point3D: " << point3D[0] << point3D[1] << point3D[2] << std::endl;
+    std::cout << "abcd: " << a_ << b_ << c_ << d_ << " weight: " << weight_ << std::endl;
     
     return true;
   }

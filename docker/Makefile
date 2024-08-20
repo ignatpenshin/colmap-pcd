@@ -34,7 +34,7 @@ run-gui: build-docker ## Run docker image with GUI support. PWD will be mounted 
 		-v /data:/data \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-v $(shell pwd):/workspace/colmap-pcd \
-		-v /home/ignat/Apps/colmap-pcd/test_data:/workspace/data \
+		-v /home/ignat/Apps/test_data:/workspace/data \
 		-w /workspace/colmap-pcd \
 		--rm \
 		-it colmap-pcd:latest \

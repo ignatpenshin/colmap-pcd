@@ -64,7 +64,7 @@ RUN cmake /tmp/ceres-solver-2.1.0 && \
 
 # Build and install COLMAP.
 WORKDIR /home/$USERNAME
-#RUN git clone https://github.com/XiaoBaiiiiii/colmap-pcd
+RUN git clone https://github.com/ignatpenshin/colmap-pcd
 WORKDIR /home/$USERNAME/colmap-pcd
 RUN mkdir build && \
 cd build && \
