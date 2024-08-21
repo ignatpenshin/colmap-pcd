@@ -19,7 +19,7 @@ help:
 build-docker: ## Build docker image. Use CUDA_ARCHITECTURES to specify the CUDA architectures to build for.
 	$(call echo_green,"Building docker image...")
 	@echo "CUDA_ARCHITECTURES=${CUDA_ARCHITECTURES}"
-	@docker build -t="colmap-pcd:latest" --build-arg CUDA_ARCHITECTURES=${CUDA_ARCHITECTURES} ./
+	@docker build -t="colmap-pcd-test:latest" --build-arg CUDA_ARCHITECTURES=${CUDA_ARCHITECTURES} ./
 
 .PHONY: run-gui
 run-gui: build-docker ## Run docker image with GUI support. PWD will be mounted to /workspace/colmap and /data to /data.
@@ -34,9 +34,6 @@ run-gui: build-docker ## Run docker image with GUI support. PWD will be mounted 
 		-v /data:/data \
 		-v /tmp/.X11-unix:/tmp/.X11-unix \
 		-v $(shell pwd):/workspace/colmap-pcd \
-		#-v /home/ignat/Apps/colmap-pcd:/home/user/colmap-pcd \
-		#-v /home/ignat/Apps/colmap-pcd:/workspace/colmap-pcd \
-		-v /home/ignat/Apps/colmap-pcd:/home/user/colmap-pcd \
 		-v /home/ignat/Apps/test_data:/workspace/data \
 		-w /workspace/colmap-pcd \
 		--rm \
@@ -55,7 +52,7 @@ run-term: build-docker ## Run docker image with terminal. PWD will be mounted to
 		-v $(shell pwd):/workspace/colmap-pcd \
 		-w /workspace/colmap-pcd \
 		--rm \
-		-it colmap-pcd:latest \
+		-it colmap-pcd-test:latest \
 		bash
 
 .PHONY: run
@@ -71,5 +68,3 @@ run: build-docker ## Run colmap command in docker image. PWD will be mounted to 
 		--rm \
 		colmap-pcd:latest \
 		colmap ${ARGS}
-		
-		#
